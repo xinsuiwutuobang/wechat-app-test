@@ -1,0 +1,92 @@
+/* pages/orderTime/index.wxss */
+scroll-view {
+    height: 128rpx;
+    width: 100%;
+}
+
+scroll-view .list {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 1302rpx;
+}
+
+scroll-view .listItem {
+    text-align: center;
+    width: 186rpx;
+    height: 128rpx;
+    background-color: white;
+    padding-top: 30rpx;
+    box-sizing: border-box;
+    /* float: left; */
+    display: inline-block;
+    border-radius: 5px
+}
+
+scroll-view .listItem text {
+    display: block;
+}
+
+scroll-view .listItem .name {
+    font-size: 30rpx;
+}
+
+scroll-view .listItem .date {
+    font-size: 30rpx;
+}
+
+scroll-view .current {
+    background-color: red;
+
+}
+
+scroll-view .current text {
+    color: #fff;
+}
+
+.time {
+    width: 95%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
+    margin-top: 30rpx;
+}
+
+.time .listItem {
+    width: 20%;
+    height: 15%;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 1%;
+    border: 1px #b9c1c8;
+    border-radius: 5rpx;
+}
+
+.time .listItem text {
+    font-size: 30rpx;
+    align-items: center;
+
+}
+
+.time .current {
+    border: 1px solid red;
+    background-color: red;
+}
+
+.time .used {
+    border: 1px solid red;
+    background-color: grey;
+}
+
+.time .current text {
+    color: white;
+}
+
+
+.button {
+    position: fixed;
+    bottom: 1rpx;
+    width: 100%;
+}

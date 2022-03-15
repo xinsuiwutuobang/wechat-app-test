@@ -1,0 +1,68 @@
+<view class="swiper-container">
+  <swiper class="swiper1" indicator-dots="true" indicator-active-color="#fff" autoplay circular>
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image mode="aspectFill" bindtap="tapBanner" data-url="{{item.linkUrl}}" src="{{item.picUrl}}" />
+    </swiper-item>
+  </swiper>
+  <view wx:if="{{goodsDynamic && show_buy_dynamic == '1' }}" class="goodsDynamic">
+    <swiper class="swiper2" autoplay circular vertical>
+      <navigator wx:for="{{goodsDynamic}}" wx:key="index" url="{{ goodsDetailPage.url(item) }}">
+        <swiper-item>
+          <view class="goodsDynamic-item">
+            <image mode="aspectFill" src="{{item.avatarUrl}}"></image>
+            <text>{{item.nick}} 购买了 {{item.goodsName}}</text>
+          </view>
+        </swiper-item>
+      </navigator>
+    </swiper>
+  </view>
+</view>
+
+<view class="category-container">
+  <view class="category-box">
+    <view class="category-list" wx:for="{{categories}}" wx:key="id">
+      <view class="category-column" bindtap="tabClick"
+        data-id="{{item.id}}">
+        <image mode="aspectFill" class="category-imgbox" src="{{item.icon}}"></image>
+        <view class="category-title">{{item.name}}</view>
+      </view>
+    </view>
+    <view class="category-list" wx:for="{{cmsCategories}}" wx:key="id">
+      <view class="category-column" bindtap="tabClickCms"
+        data-idx="{{ index }}">
+        <image mode="aspectFill" class="category-imgbox" src="{{item.icon}}"></image>
+        <view class="category-title">{{item.name}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="subscribe-container">
+  <!-- 秒杀开始 -->
+  <block wx:if="{{miaoshaGoods && miaoshaGoods.length > 0}}">
+    <van-divider custom-class="table-text" contentPosition="center">
+      <image class="table-icon-miaosha" src="../../images/home/miaosha.png"></image> 限时预约
+    </van-divider>
+    <view class="miaosha-container">
+      <view class="miaosha-goods-list" wx:for="{{miaoshaGoods}}" wx:key="id" 
+        data-id="{{item.id}}" data-supplytype="{{item.supplyType}}" data-yyid="{{item.yyId}}">
+        <image src="{{item.pic}}" class="image" mode="aspectFill" lazy-load="true" />
+        <view class="r">
+          <view class="goods-title">{{item.name}}</view>
+          <view class="goods-times count-down" style="font-size:50rpx;color:red">
+            <text >剩余:33位</text>
+          </view>
+          <view class="goods-price miaosha-price-btn">
+            <view class="price">￥{{item.minPrice}} <text>￥{{item.originalPrice}}</text></view>
+            
+          </view>
+          <view class="miaosha-price-btn">
+            <van-button bindtap="toOrderTap" custom-class="msbtn"  type="danger" size="small" round>立即预约
+            </van-button>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- 秒杀结束 -->
+</view>

@@ -1,0 +1,49 @@
+<!--pages/orderTime/index.wxml-->
+<view class='containt'>
+    <van-divider hairline />
+    <scroll-view class="scroll-view_H" scroll-x>
+        <view class='list' style='width:{{ width }}rpx'>
+            <view bindtap="select" wx:for="{{ calendar }}" wx:for-item="item" wx:for-index="index" data-index="{{ index }}" class='listItem {{index==currentIndex? "current":""}} van-button--danger' wx:key='' data-date="{{ item.date}}">
+                <text class='name'>{{ item.week }}</text>
+                <text class='date'>{{ item.date }}</text>
+            </view>
+        </view>
+    </scroll-view>
+    <van-divider hairline contentPosition="left">预约上午</van-divider>
+    <view class='time'>
+        <view wx:for="{{ amOrder }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeItem.id }}" data-time="{{ timeItem.time}}"  bindtap='selectTime' data-status="{{timeItem.status}}"  class='listItem' wx:key=''>
+            <van-button bind:click='selectTime'
+                type='{{ currentTime== timeItem.id? "danger":"primary"}}'
+                size="large" 
+                color='{{ currentTime== timeItem.id? "red":""}}'
+                disabled='{{timeItem.disabledStatus}}'
+                >  {{ timeItem.time }}</van-button>
+        </view>
+    </view>
+    <van-divider hairline contentPosition="left">预约下午</van-divider>
+    <view class='time'>
+        <view wx:for="{{ pmOrder }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeItem.id }}" data-time="{{ timeItem.time}}"  bindtap='selectTime' data-status="{{timeItem.status}}"  class='listItem' wx:key=''>
+            <van-button bind:click='selectTime'
+                type='{{ currentTime== timeItem.id? "danger":"primary"}}'
+                size="large" 
+                color='{{ currentTime== timeItem.id? "red":""}}'
+                disabled='{{timeItem.disabledStatus}}'
+                >  {{ timeItem.time }}</van-button>
+        </view>
+        
+    </view>
+    <van-divider hairline contentPosition="left">预约晚上</van-divider>
+    <view class='time'>
+        <view wx:for="{{ nightOrder }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeItem.id }}" data-time="{{ timeItem.time}}"  bindtap='selectTime' data-status="{{timeItem.status}}"  class='listItem' wx:key=''>
+            <van-button bind:click='selectTime'
+                type='{{ currentTime== timeItem.id? "danger":"primary"}}'
+                size="large" 
+                color='{{ currentTime== timeItem.id? "red":""}}'
+                disabled='{{timeItem.disabledStatus}}'
+                >  {{ timeItem.time }}</van-button>
+        </view>
+    </view>
+
+    <van-button class="button" bindtap="buildOrder" position="bottom" type="primary" size="large" block square hairline>立即预约</van-button>
+
+</view>

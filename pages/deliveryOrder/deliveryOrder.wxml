@@ -1,0 +1,37 @@
+<block>
+  <van-cell title="一键获取微信收货地址" size="large" is-link bind:click="readFromWx" />
+  <view class="space"></view>
+</block>
+
+<van-field
+  label="姓名"
+  model:value="{{ linkMan }}"
+  placeholder="填写收货人"
+  input-align="right"
+  clearable
+/>
+<van-field
+  label="手机号码"
+  model:value="{{ mobile }}"
+  placeholder="填写手机号码"
+  input-align="right"
+  type="number"
+  clearable
+/>
+<!-- <van-cell  title="选择定位" value="{{ addressData.latitude ? (addressData.latitude + ',' + addressData.longitude) : '请选择' }}" is-link bind:click="chooseLocation" /> -->
+<van-field
+  label="小区地址"
+  model:value="{{ address }}"
+  placeholder="小区地址"
+  input-align="right"
+  clearable
+/>
+<van-field
+  label="详细地址"
+  model:value="{{ detailAddress }}"
+  placeholder="门牌信息"
+  input-align="right"
+  clearable
+/>
+<button type="primary" class="save-btn" bindtap="bindSave">保存</button>
+<button type="danger" class="save-btn" bindtap="deleteAddress" data-id="{{id}}" wx:if="{{id}}">删除该地址</button>
